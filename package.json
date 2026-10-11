@@ -1,0 +1,22 @@
+{
+  "name": "magic-slime-battle",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "sim": "tsx tools/sim.ts",
+    "assets": "python3 tools/make_sprites.py && python3 tools/make_bg.py"
+  },
+  "dependencies": {
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "@idosgames/core": "^0.21.5",
+    "@idosgames/wallet": "^0.6.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  }
+}
