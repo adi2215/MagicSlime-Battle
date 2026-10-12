@@ -61,6 +61,10 @@ const S = {
   // results
   victory: { ru: "Победа!", en: "Victory!" },
   defeat: { ru: "Поражение", en: "Defeat" },
+  tipStrong: { ru: "Совет: здесь сильнее всего бьют {els}.", en: "Tip: {els} hit hardest here." },
+  tipTeam: { ru: "Поставь в команду: {names} (вкладка «Команда»).", en: "Put {names} in your team (Team tab)." },
+  tipBuy: { ru: "Купи в магазине: {names}.", en: "Buy {names} in the Shop." },
+  tipDefend: { ru: "Когда босс заряжает удар — жми «Защита»: блок снимает 65% урона.", en: "When the boss charges up, press Defend: blocking cuts 65% of the damage." },
   defeatHint: { ru: "Прокачай слаймов, купи новых или зелья — и попробуй снова!", en: "Level up, recruit new slimes or buy potions — then try again!" },
   levelUp: { ru: "{name} достиг {lvl} уровня!", en: "{name} reached level {lvl}!" },
   gold: { ru: "Золото", en: "Gold" },

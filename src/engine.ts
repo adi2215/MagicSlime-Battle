@@ -38,6 +38,7 @@ export interface Fighter {
   stun: boolean;
   charging: boolean;
   turnsOut: number;
+  heals: number;
 }
 
 export type ItemId = ItemDef["id"];
@@ -90,7 +91,7 @@ export function makeSlimeFighter(o: OwnedSlime): Fighter {
   return {
     uid: `p${uidSeq++}`, defId: d.id, name: d.name, sprite: d.sprite, el: d.el, lvl: o.lvl,
     maxHp: s.hp, hp: s.hp, atk: s.atk, def: s.def, spd: s.spd, mana: MANA_START,
-    boss: false, healer: true, defending: false, burn: 0, wet: 0, stun: false, charging: false, turnsOut: 0,
+    boss: false, healer: true, defending: false, burn: 0, wet: 0, stun: false, charging: false, turnsOut: 0, heals: 0,
   };
 }
 
@@ -100,7 +101,7 @@ export function makeEnemy(id: string, lvl: number): Fighter {
   return {
     uid: `e${uidSeq++}`, defId: d.id, name: d.name, sprite: d.sprite, el: d.el, lvl,
     maxHp: s.hp, hp: s.hp, atk: s.atk, def: s.def, spd: s.spd, mana: MANA_START,
-    boss: !!d.boss, healer: !!d.healer, defending: false, burn: 0, wet: 0, stun: false, charging: false, turnsOut: 0,
+    boss: !!d.boss, healer: !!d.healer, defending: false, burn: 0, wet: 0, stun: false, charging: false, turnsOut: 0, heals: 0,
   };
 }
 
@@ -158,7 +159,7 @@ export function enemyPlan(b: Battle): EnemyAction {
   const r = b.rng();
   if (e.charging) return { k: "release" };
   if (e.boss && e.turnsOut > 0 && e.turnsOut % 4 === 2) return { k: "charge" };
-  if (e.healer && e.hp < e.maxHp * 0.35 && e.mana >= HEAL_COST && r < 0.55) return { k: "heal" };
+  if (e.healer && e.heals < (e.boss ? 2 : 1) && e.hp < e.maxHp * 0.35 && e.mana >= HEAL_COST && r < 0.55) return { k: "heal" };
   if (e.mana >= SPECIAL_COST && r < 0.5) return { k: "special" };
   if (r > 0.92) return { k: "defend" };
   return { k: "attack" };
@@ -270,6 +271,7 @@ function doAction(b: Battle, side: Side, a: Action | EnemyAction, ev: BEvent[]) 
       break;
     case "heal": {
       me.mana -= HEAL_COST;
+      me.heals++;
       const amt = Math.min(me.maxHp - me.hp, Math.round(me.maxHp * 0.35));
       me.hp += amt;
       ev.push({ t: "act", side, kind: "heal" });

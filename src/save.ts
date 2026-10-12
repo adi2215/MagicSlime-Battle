@@ -35,8 +35,8 @@ export function freshSave(): Save {
   return {
     v: 1,
     gold: 100,
-    owned: [{ id: "drop", lvl: 2, xp: 0 }],
-    team: ["drop"],
+    owned: [{ id: "drop", lvl: 2, xp: 0 }, { id: "ember", lvl: 2, xp: 0 }],
+    team: ["drop", "ember"],
     items: { potion: 3, elixir: 1, apple: 0 },
     cleared: -1,
     stars: new Array(STAGES.length).fill(0),
@@ -55,6 +55,12 @@ function sanitize(raw: unknown): Save | null {
   const s = { ...freshSave(), ...(raw as Partial<Save>) } as Save;
   if (!Array.isArray(s.owned) || s.owned.length === 0) return null;
   s.owned = s.owned.filter((o) => o && typeof o.id === "string").map((o) => ({ id: o.id, lvl: Math.min(MAX_LEVEL, Math.max(1, o.lvl | 0)), xp: Math.max(0, o.xp | 0) }));
+  // Ember became a free starter: older saves get it at the level of their best slime
+  if (!s.owned.some((o) => o.id === "ember")) {
+    const best = Math.max(...s.owned.map((o) => o.lvl));
+    s.owned.push({ id: "ember", lvl: best, xp: 0 });
+    if (Array.isArray(s.team) && s.team.length < TEAM_SIZE) s.team = [...s.team, "ember"];
+  }
   s.team = (s.team || []).filter((id) => s.owned.some((o) => o.id === id)).slice(0, TEAM_SIZE);
   if (s.team.length === 0) s.team = [s.owned[0].id];
   s.stars = STAGES.map((_, i) => Math.max(0, Math.min(3, (s.stars?.[i] ?? 0) | 0)));

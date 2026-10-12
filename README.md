@@ -67,7 +67,8 @@ Most blockchain games put the token first and the game second players are asked 
 - 🌈 **6 elements** with a rock-paper-scissors chart (💧 > 🔥 > 🌿 > 💧⚡, ⚡ > 💧, 🌑 ⇄ ✨) and status effects (burn, soak, stun, life-drain, team heal, armour pierce)
 - 👑 **Boss fights** with telegraphed charge attacks read the warning and defend
 - 🗺️ **4 lands × 5 stages** (Green Forest, Crystal Lake, Fire Volcano, Dark Fortress) and up to **3 stars per stage**
-- 🫧 **7 slimes to collect** 6 bought with gold as you progress, plus the **Solana-exclusive "Sol"**
+- 🫧 **7 slimes to collect** — start with Droplet and Ember, recruit 4 more with gold as you progress, plus the **Solana-exclusive "Sol"**
+- 💡 **Friendly difficulty curve** tuned with a casual-player simulator, and after a defeat the game tells you which element and which slime to bring
 - 📈 Slimes level up from battles; train them with gold; buy potions, mana elixirs and revive apples
 - ☁️ **Cloud save** and **global leaderboard** through iDos Games
 - 🌐 **English / Russian**, auto-detected, switchable in one tap

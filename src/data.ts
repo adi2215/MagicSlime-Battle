@@ -66,7 +66,7 @@ export const SPECIALS: Record<Element, SpecialMove> = {
 
 export const SLIMES: SlimeDef[] = [
   { id: "drop", sprite: "p_water", el: "water", name: { ru: "Капля", en: "Droplet" }, base: { hp: 62, atk: 16, def: 9, spd: 10 }, special: SPECIALS.water, price: 0, unlockAfter: -1 },
-  { id: "ember", sprite: "p_fire", el: "fire", name: { ru: "Огонёк", en: "Ember" }, base: { hp: 54, atk: 20, def: 7, spd: 12 }, special: SPECIALS.fire, price: 80, unlockAfter: 0 },
+  { id: "ember", sprite: "p_fire", el: "fire", name: { ru: "Огонёк", en: "Ember" }, base: { hp: 54, atk: 20, def: 7, spd: 12 }, special: SPECIALS.fire, price: 0, unlockAfter: -1 },
   { id: "sprout", sprite: "p_nature", el: "nature", name: { ru: "Росток", en: "Sprout" }, base: { hp: 72, atk: 14, def: 11, spd: 8 }, special: SPECIALS.nature, price: 80, unlockAfter: 0 },
   { id: "zap", sprite: "p_storm", el: "storm", name: { ru: "Искрик", en: "Zappy" }, base: { hp: 56, atk: 18, def: 8, spd: 16 }, special: SPECIALS.storm, price: 380, unlockAfter: 4 },
   { id: "umbra", sprite: "p_shadow", el: "shadow", name: { ru: "Тень", en: "Umbra" }, base: { hp: 60, atk: 23, def: 8, spd: 14 }, special: SPECIALS.shadow, price: 900, unlockAfter: 9 },
@@ -127,7 +127,7 @@ export const ZONES: ZoneDef[] = [
 export const STAGES_PER_ZONE = 5;
 
 export function stageLevel(idx: number): number {
-  return 1 + Math.round(idx * 1.4);
+  return 1 + Math.round(idx * 1.3);
 }
 
 function buildStages(): StageDef[] {
@@ -180,7 +180,7 @@ export const HEAL_COST = 35;
 
 export function statsAt(base: BaseStats, lvl: number, boss = false): BaseStats {
   const g = lvl - 1;
-  const hpMul = boss ? 2.8 : 1;
+  const hpMul = boss ? 2.2 : 1;
   return {
     hp: Math.round(base.hp * (1 + 0.11 * g) * hpMul),
     atk: Math.round(base.atk * (1 + 0.1 * g)),

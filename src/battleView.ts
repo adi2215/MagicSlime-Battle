@@ -1,5 +1,5 @@
 // Battle screen: renders a Battle and plays engine events as animations.
-import { ELEMENTS, HEAL_COST, ITEMS, MANA_MAX, SLIMES, SPECIAL_COST, ZONES, slimeDef, xpToNext, type Element, type StageDef } from "./data";
+import { ELEMENTS, HEAL_COST, ITEMS, MANA_MAX, SLIMES, SPECIAL_COST, STRONG_VS, ZONES, slimeDef, xpToNext, type Element, type StageDef } from "./data";
 import { activeE, activeP, canUse, createBattle, playTurn, type Action, type BEvent, type Fighter, type Side } from "./engine";
 import { bar, btn, coin, elChip, h, hpColor, itemImg, modal, sleep, spriteEl, stars } from "./dom";
 import { t, tl, type SKey } from "./i18n";
@@ -469,6 +469,22 @@ export function openBattle(wrap: HTMLElement, stage: StageDef, ctx: Ctx) {
     (actionsEl.children[1] as HTMLElement).title = `${moveName("p")} — ${tl(slimeDef(p.defId).special.desc)}`;
   }
 
+  function defeatTips(): string[] {
+    const tips: string[] = [];
+    const foeEls = Array.from(new Set(b.enemies.map((e) => e.el)));
+    const good = (Object.keys(STRONG_VS) as Element[]).filter((el) => STRONG_VS[el].some((x) => foeEls.includes(x)));
+    if (good.length) tips.push("💡 " + t("tipStrong", { els: good.map((el) => `${ELEMENTS[el].icon} ${tl(ELEMENTS[el].name)}`).join(", ") }));
+    const teamEls = new Set(b.team.map((f) => f.el));
+    if (!good.some((el) => teamEls.has(el))) {
+      const benched = save.owned.filter((o) => !save.team.includes(o.id) && good.includes(slimeDef(o.id).el));
+      const buyable = SLIMES.filter((d) => good.includes(d.el) && !save.owned.some((o) => o.id === d.id) && !d.walletOnly && d.unlockAfter <= save.cleared);
+      if (benched.length) tips.push("🫧 " + t("tipTeam", { names: benched.map((o) => tl(slimeDef(o.id).name)).join(", ") }));
+      else if (buyable.length) tips.push("🛒 " + t("tipBuy", { names: buyable.map((d) => tl(d.name)).join(", ") }));
+    }
+    if (b.stage.boss) tips.push("🛡 " + t("tipDefend"));
+    return tips;
+  }
+
   function confirmFlee() {
     if (busy) return;
     modal((close) => h("div", { class: "col" },
@@ -500,6 +516,8 @@ export function openBattle(wrap: HTMLElement, stage: StageDef, ctx: Ctx) {
         box.append(st, h("div", { class: "star-reasons" }, h("span", null, t("star_win")), h("span", null, t("star_nofaint")), h("span", null, t("star_noitems"))));
       } else {
         box.append(h("p", { class: "center muted", style: "margin:0" }, t("defeatHint")));
+        const tips = defeatTips();
+        if (tips.length) box.append(h("div", { class: "panel", style: "padding:10px 12px;background:var(--panel-2);font-size:14px;line-height:1.45" }, ...tips.map((x) => h("div", null, x))));
       }
       box.append(h("div", { class: "reward-row" }, h("span", null, coin(), ` +${o.gold}`), h("span", { style: "color:#9fd6ff" }, `✦ +${o.xp} ${t("xp")}`)));
       if (o.win) box.append(h("div", { class: "center muted", style: "font-size:12px;margin-top:-6px" }, o.firstClear ? t("firstClear") : t("replay")));

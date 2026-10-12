@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "sim": "tsx tools/sim.ts",
+    "sim:casual": "tsx tools/sim-casual.ts",
     "assets": "python3 tools/make_sprites.py && python3 tools/make_bg.py"
   },
   "dependencies": {
