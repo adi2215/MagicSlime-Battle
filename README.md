@@ -30,14 +30,14 @@ Sign in with your **Solana wallet** to tie your progress to your wallet, unlock 
 
 ## 👤 Team
 **Team Name:** 64Bit
-**Developer:** Solo Developer — [Samurat Adilet]
+**Developer:** Solo Developer [Samurat Adilet]
 - [GitHub](https://github.com/adi2215)
 - [LinkedIn](https://www.linkedin.com/in/sam-pixel/)
 
 ---
 
 ## 🏆 Hackathon Participation
-**Event:** iDos Games Hackathon — build a game with iDos Games and a meaningful Solana integration
+**Event:** iDos Games Hackathon build a game with iDos Games and a meaningful Solana integration
 **Submitted via:** Colosseum · Superteam Earn
 
 ---
@@ -53,10 +53,10 @@ Sign in with your **Solana wallet** to tie your progress to your wallet, unlock 
 ---
 
 ## 💡 Problem & Solution
-Most blockchain games put the token first and the game second — players are asked to buy, connect and sign before they ever have fun.
+Most blockchain games put the token first and the game second players are asked to buy, connect and sign before they ever have fun.
 
 **Magic Slime** flips that around:
-- The game is **fully playable instantly** — as a guest, no wallet, no download.
+- The game is **fully playable instantly** as a guest, no wallet, no download.
 - Solana is added **where it actually means something for the player**: identity, ownership of progress, an exclusive collectible and a public on-chain-identity ranking.
 - Signing in with a wallet is a single **free signature** — no transaction, no gas.
 
@@ -65,9 +65,9 @@ Most blockchain games put the token first and the game second — players are as
 ## ⚙️ Key Features
 - ⚔️ **Turn-based battles** like in Pokémon: Attack, Elemental Special, Defend, Heal, Items, Switch slime
 - 🌈 **6 elements** with a rock-paper-scissors chart (💧 > 🔥 > 🌿 > 💧⚡, ⚡ > 💧, 🌑 ⇄ ✨) and status effects (burn, soak, stun, life-drain, team heal, armour pierce)
-- 👑 **Boss fights** with telegraphed charge attacks — read the warning and defend
+- 👑 **Boss fights** with telegraphed charge attacks read the warning and defend
 - 🗺️ **4 lands × 5 stages** (Green Forest, Crystal Lake, Fire Volcano, Dark Fortress) and up to **3 stars per stage**
-- 🫧 **7 slimes to collect** — 6 bought with gold as you progress, plus the **Solana-exclusive "Sol"**
+- 🫧 **7 slimes to collect** 6 bought with gold as you progress, plus the **Solana-exclusive "Sol"**
 - 📈 Slimes level up from battles; train them with gold; buy potions, mana elixirs and revive apples
 - ☁️ **Cloud save** and **global leaderboard** through iDos Games
 - 🌐 **English / Russian**, auto-detected, switchable in one tap
