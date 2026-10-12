@@ -29,7 +29,7 @@ Sign in with your **Solana wallet** to tie your progress to your wallet, unlock 
 ---
 
 ## 👤 Team
-**Team Name:** 64Bit
+**Team Name:** SamPixelStudio
 **Developer:** Solo Developer [Samurat Adilet]
 - [GitHub](https://github.com/adi2215)
 - [LinkedIn](https://www.linkedin.com/in/sam-pixel/)
